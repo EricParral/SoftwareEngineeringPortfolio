@@ -1,10 +1,8 @@
 
----
 
-### 📄 **README.md**
 
-```markdown
-# Project 5 Discord Bot
+
+# Project Discord Bot
 
 This was a simple and fun Discord bot built with **discord.js** that demonstrates command creation, environment variables, and an interactive Tic-Tac-Toe game with a GUI.
 
@@ -114,4 +112,5 @@ Once your bot is online in your server:
 **Eric Miguel Parral**
 Project 5 — JavaScript Discord Bot Exploration
 Built to demonstrate shell-style command handling and Discord.js interactivity.
+
 
