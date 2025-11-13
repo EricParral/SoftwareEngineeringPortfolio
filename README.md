@@ -1,113 +1,74 @@
-# 👋 Hi, I'm Eric Parral
+# Jeopardy Game (scaffold)
 
-🎓 **Software Engineering Student @ Utah Valley University**  
-💻 **AS in Computer Science | BS in Software Engineering (Expected 2026)**  
-📍 West Jordan, UT | 📧 parraleric04@outlook.com | 📞 801-834-7281  
+This is a small Jeopardy-style game scaffold built for a quick browser-based assignment.
+The project fetches questions from the Open Trivia Database (https://opentdb.com/) and renders screens using template literals. A minimal fetch polyfill and simple screen modules are provided so the app runs in environments without a native `fetch` implementation.
 
----
+## Features
 
-## 🚀 About Me
+- Fetches questions from the Open Trivia Database API.
+- Uses a fetch polyfill (XMLHttpRequest) to support older browsers.
+- Screens are implemented as separate modules (home, game board, question screen) and return HTML strings using template literals.
+- A lightweight dev server (lite-server) is configured for live reload.
+- Handles the API rate limit by waiting 5 seconds between category calls (per assignment requirement).
+- Provides fallbacks and visible status messages in-page so the app doesn't fail to a white screen when a request or module loading issue occurs.
 
-I’m a motivated and versatile **Software Engineering student** passionate about building efficient, user-friendly, and scalable applications. With over **10 years of programming experience**, I enjoy tackling complex problems, exploring new technologies, and developing innovative software solutions that make an impact.
+## Quick start (Windows PowerShell)
 
-My background blends strong fundamentals in **computer science**, **full-stack development**, and **AI/ML training**, along with hands-on experience using modern frameworks and tools.
+1. Open PowerShell in the project folder:
 
----
+```powershell
+cd "c:\Users\parra\OneDrive\Desktop\Jeopardy_Emp\jeopardy-game"
+```
 
-## 🧠 Key Skills
+2. Install dependencies (if you haven't already):
 
-**Languages:**  
-Python · JavaScript (ES6+) · Java · C · C++ · Rust · SML · SQL · HTML · CSS  
+```powershell
+npm install
+```
 
-**Frameworks & Tools:**  
-React · Node.js · Figma · Git/GitHub · AWS · Azure  
+3. Start the dev server (live reload):
 
-**Core Competencies:**  
-Web Development · Data Structures & Algorithms · Networking ·  
-Database Management · Testing & Debugging · AI/ML Development  
+```powershell
+npm start
+```
 
-**Operating Systems:**  
-Windows · Linux  
+lite-server will open a browser window (usually at http://localhost:3005/) and reload on file changes.
 
----
+## Files and structure
 
-## 🏗️ Featured Projects
+- `index.html` — main HTML page and entry point.
+- `style.css` — basic styles for the game UI.
+- `app.js` — application entry; wires screens and handles game logic and fetching.
+- `fetchPolyfill.js` — small fetch polyfill implemented with XMLHttpRequest (requirement: no external fetch polyfill packages).
+- `utils/api.js` — API helpers and category list; provides `getQuestions()`.
+- `screens/` — screen modules that return HTML via template literals:
+  - `homeScreen.js` — home screen markup + start button
+  - `gameBoard.js` — renders the Jeopardy board
+  - `questionScreen.js` — renders the question and answer buttons
+- `package.json` — project metadata and start script (`lite-server`).
 
-### 💬 AI Chatbot for University Registration
-- Built an AI-powered chatbot to assist students with course registration.
-- Integrated natural language processing for user interaction.
+## Notes, constraints, and behavior
 
-### 🧩 Message Encoder/Decoder (Assembly)
-- Created a low-level assembly program for encoding and decoding messages.
-- Explored performance and memory efficiency techniques.
+- Open Trivia DB rate limit: the app intentionally waits 5 seconds between category calls. Expect the "Loading questions..." phase to take time depending on the number of categories.
+- If a category fetch fails the app uses placeholder/fallback questions so the board still renders.
+- The app decodes HTML entities returned by the API so questions/answers display correctly.
+- A small status panel (bottom-right) is shown in the page to surface runtime errors and loading progress — check that if the UI appears blank.
 
-### 🔐 DES Encryption Algorithm
-- Implemented the **Data Encryption Standard (DES)** for a cybersecurity application.
-- Focused on secure key generation and bitwise encryption methods.
+## Troubleshooting
 
-### 🌐 Personal Portfolio Website
-- Designed and deployed a full-stack personal portfolio using **React** and **CSS**.
-- Showcases skills, projects, and contact information.
+- Blank screen / white page: open the page DevTools Console and look for errors. Also check the small status panel in the page (bottom-right) for messages. Common causes:
+  - Module import shape mismatches (ES modules in the browser). The scaffold uses default exports for screens and also exposes a default export from `utils/api.js` to be resilient.
+  - Network errors when calling the Open Trivia DB API (CORS or offline). In those cases fallbacks will be used.
 
-### 🏪 Point-of-Sale System
-- Built an item management and pricing system for small businesses.
-- Emphasized usability, modular code structure, and database handling.
+- If you change module exports, do a hard reload in the browser (Ctrl+Shift+R) to clear cached ES modules served by lite-server.
 
-### 🎮 Mini Game Collection
-- Developed classic games like **Tic-Tac-Toe** and others for learning and recreation.
+## Next steps / suggestions
 
----
+- Style the board to more closely match the Jeopardy TV show (grid layout, colors, fonts).
+- Add a progress indicator (progress bar) during the slow category-loading phase.
+- Persist scores or add player names and rounds.
+- Add tests for the utility functions.
 
-## 💼 Experience
+## License
 
-**HSM Host Crew Member – SLC International Airport (2023–Present)**  
-- Ensured smooth guest experiences in a fast-paced, international environment.  
-- Developed strong teamwork, adaptability, and communication skills.
-
-**Flooring Specialist – Brothers Flooring (2022–2023)**  
-- Delivered precision-based installations and managed client projects.  
-- Enhanced project management and customer relations abilities.
-
----
-
-## 🏆 Certifications
-
-- Microsoft Excel & Word (Certified)  
-- Adobe Suite Certificates  
-- Microsoft Azure Fundamentals  
-- AWS Certification  
-- Oracle Certified  
-
----
-
-## 🤖 Extracurriculars
-
-- **Robotics League (Team Captain):**  
-  - Led design and programming efforts; placed 8th statewide.  
-- **Computer Science Club (UVU):**  
-  - Collaborated on projects and hackathons for 2+ years.  
-
----
-
-## 🌍 Additional Information
-
-- **Bilingual:** Fluent in English & Spanish  
-- **Programming Since:** 2013  
-- Cover letter available upon request  
-
----
-
-## 🧭 Objective
-
-> *“To contribute to innovative projects that push the boundaries of software engineering while continuously advancing my expertise.”*
-
----
-
-### 📫 Let’s Connect!
-
-- 💼 [LinkedIn](#) *(Add your profile link here)*  
-- 📧 [Email Me](mailto:parraleric04@outlook.com)
-
----
-
-⭐ *Thanks for visiting my portfolio! Feel free to explore my repositories and projects.*
+MIT

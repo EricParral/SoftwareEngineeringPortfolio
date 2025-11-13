@@ -1,0 +1,16 @@
+{
+  "name": "jeopardy-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Placeholder Jeopardy game scaffold",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
