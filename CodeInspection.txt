@@ -1,0 +1,27 @@
+1. Code Formatting and Style
+    - Code is consistantly formatted
+    - Variables are conventinally names
+
+2. Correctness and Completness
+    - All algorithms are implented correctly
+    - Buttons don't work 
+
+3. Efficiency
+    - No
+    - At the moment, No
+
+4. Error Handling
+    - No, it doesn't test inputs or exception, and no main function
+    - Nope
+
+5. Documentationand Comments
+    - Not really
+    - No
+
+6. Security
+    - No
+    - no
+
+7. Portability and Maintainablility
+    - No
+    - Yes 

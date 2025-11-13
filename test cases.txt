@@ -1,0 +1,146 @@
+Possible test cases for different majors:
+
+Major: Applied Communication, B.A.
+    if classes taken include:
+        COMM 1050
+    AdvisorBot can suggest:
+        COMM 319G
+
+    if classes taken include:
+        COMM 1050
+        COMM 319G
+    AdvisorBot can suggest:
+        COMM 4930
+
+Major: Art History, B.A.
+    if classes taken include:
+        ART 2720
+        ENGL 1010 or ENGH 1005
+    AdvisorBot can suggest:
+        ARTH 2800
+    
+    if classes taken include:
+        ART 2710
+        ART 2720
+        6 credits of advanced ARTH
+        ENGL 1010 or ENGH 1005
+    AdvisorBot can suggest:
+        ART 400R
+
+Major: Biotechnology, B.S.
+    if classes taken include:
+        BIOL 1610
+        CHEM 1220
+    AdvisorBot can suggest:
+        BIOL 3440
+    
+    if classes taken include:
+        BIOL 3500
+        6 credits of advanced biology (BIOL, BOT, MICR, ZOOL, BTEC)
+    AdvisorBot can suggest:
+        BIOL 4550
+
+Major: Commercial Music, B.M.
+    if AdvisorBot suggests:
+        MUSC 1130
+    AdvisorBot must also suggest:
+        MUSC 1110
+
+    if classes taken include:
+        MUSC 2130
+    AdvisorBot can suggest:
+        MUSC 2140
+
+Major: Digital Marketing, B.S.
+    if classes taken include:
+        ENGL 2010 or MKTG 220G
+    AdvisorBot can suggest:
+        MGMT 3000
+    
+    if classes taken include:
+        MKTG 3600
+        MKTG 3660
+    AdvisorBot can suggest:
+        MKTG 3680
+
+Major: Elementary Education, B.S.
+    if student has:
+        University Advanced Standing
+        admission to Professional Education Program
+    AdvisorBot can suggest:
+        EDEL 3000
+        EDEL 3100
+        EDEL 325G
+        EDEL 330G
+        EDEL 3350
+        EDEL 4200
+        EDEL 4230
+        EDEL 4400
+        EDEL 4410
+        EDEL 4420
+        EDEL 443G
+        EDEL 4510
+        EDEL 4520
+        EDEL 4530
+        EDEL 4540
+        EDEL 4620
+
+    if AdvisorBot suggests:
+        EDEL 4240
+    AdvisorBot must also suggest:
+        EDEL 4880
+        EDEL 4980
+        EDEL 4990
+    
+Major: Family Science, B.A.
+    if classes taken include:
+        ENGL 1010 or ENGL 101H or ENGH 1005
+    AdvisorBot can suggest:
+        FAMS 2750
+    
+    if classes taken include:
+        FAMS 204G or PSY 1010 or SOC 1010
+        ENGL 2010 or ENGL 201H
+    AdvisorBot can suggest:
+        FAMS 4400
+
+Major: Forensic Science, B.S.
+    if classes taken include:
+        MATH 1050
+    AdvisorBot can suggest:
+        PHYS 2010 and PHYS 2015
+    
+    if classes taken include:
+        CJ 1330
+    AdvisorBot can suggest:
+        CJ 2350
+
+Major: History, B.A.
+    if classes taking include:
+        HIST 3010
+    or the student receives instructor approval,
+    AdvisorBot can suggest:
+        HIST 4980
+
+    if student wants to fill their European History credit,
+    AdvisorBot can suggest:
+        HIST 3110
+        HIST 3130
+        HIST 3150
+        HIST 3160
+        HIST 3170
+        HIST 3180
+        HIST 3190
+        HIST 3320
+        HIST 3340
+        HIST 366G
+        HIST 4180
+
+Possible test cases for other features: 
+
+    If user asks for a list of clubs,
+    AdvisorBot returns each club listed on this page:
+        https://uvu.campusgroups.com/club_signup?group_type=25438&category_tags=
+
+    If student registers for a class through the AdvisorBot,
+    AdvisorBot updates their registration and all other relevant pages.
