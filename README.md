@@ -77,5 +77,3 @@ The frontend connects to the backend at `ws://<host>:8081`. By default App.svelt
 - Add replay / move history and undo for placement.
 - Add persistent matchmaking / lobby.
 - Add animations for hits/sinks and a replayable game log.
-
-If you want, I can also add a short developer README with debugging tips and instructions for running tests or adding features. Want that?
