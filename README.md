@@ -1,113 +1,81 @@
-# 👋 Hi, I'm Eric Parral
+# Battleship (Svelte + WebSocket)
 
-🎓 **Software Engineering Student @ Utah Valley University**  
-💻 **AS in Computer Science | BS in Software Engineering (Expected 2026)**  
-📍 West Jordan, UT | 📧 parraleric04@outlook.com | 📞 801-834-7281  
+A lightweight two-player Battleship game built with Svelte (frontend) and a small Node.js WebSocket server (backend). Two players can open the app in separate browser tabs, place ships (manual or random), and play turn-based attacks in real time.
 
----
+**Project structure**
+- `index.html` – app entry
+- `src/` – Svelte app source
+  - `App.svelte` – main router + WebSocket connection
+  - `ShipPlacement.svelte` – ship placement UI
+  - `Game.svelte` – battle UI (two grids)
+  - `Grid.svelte` – reusable 10x10 grid component
+  - `main.js` – app bootstrap
+- `server.js` – Node.js WebSocket server (using `ws`)
 
-## 🚀 About Me
+**Requirements**
+- Node.js 18+ recommended
+- npm
 
-I’m a motivated and versatile **Software Engineering student** passionate about building efficient, user-friendly, and scalable applications. With over **10 years of programming experience**, I enjoy tackling complex problems, exploring new technologies, and developing innovative software solutions that make an impact.
+**Install**
+Open a terminal in the project root and run:
 
-My background blends strong fundamentals in **computer science**, **full-stack development**, and **AI/ML training**, along with hands-on experience using modern frameworks and tools.
+```powershell
+npm install
+```
 
----
+**Run (development)**
+Start the backend WebSocket server (default port 8081):
 
-## 🧠 Key Skills
+```powershell
+$env:WS_PORT=8081; npm run start-server
+```
 
-**Languages:**  
-Python · JavaScript (ES6+) · Java · C · C++ · Rust · SML · SQL · HTML · CSS  
+Start the frontend dev server (Vite):
 
-**Frameworks & Tools:**  
-React · Node.js · Figma · Git/GitHub · AWS · Azure  
+```powershell
+npm run dev
+```
 
-**Core Competencies:**  
-Web Development · Data Structures & Algorithms · Networking ·  
-Database Management · Testing & Debugging · AI/ML Development  
+Open the app in two browser tabs at:
 
-**Operating Systems:**  
-Windows · Linux  
+```
+http://localhost:5173
+```
 
----
+The frontend connects to the backend at `ws://<host>:8081`. By default App.svelte uses `window.location.hostname` so you can run the server locally and open multiple tabs.
 
-## 🏗️ Featured Projects
+**How to play**
+1. Open two browser tabs and wait for both players to connect.
+2. On the placement screen, place ships manually or click `Random & Start`.
+3. Click `Confirm Ships` (or `Random & Start`). Both players must be ready before the game begins.
+4. During the battle phase click cells on the enemy grid to fire. The UI shows hits (red), misses (grey), and sunk ships (orange). The status bar shows turn and a one-line result of the most recent shot.
 
-### 💬 AI Chatbot for University Registration
-- Built an AI-powered chatbot to assist students with course registration.
-- Integrated natural language processing for user interaction.
+**Controls**
+- Placement:
+  - Select a ship (unique buttons for duplicate sizes) and click a starting cell to place horizontally or vertically depending on the orientation toggle.
+  - `Random & Start` generates a random layout and immediately marks you ready (sends your placement to the server so both client/server use the same coordinates).
+  - `Confirm Ships` sends your manual placement to the server and marks you ready.
+  - `Clear All` resets your placement locally.
+- Battle:
+  - Click cells on the enemy board to fire (only when it's your turn).
 
-### 🧩 Message Encoder/Decoder (Assembly)
-- Created a low-level assembly program for encoding and decoding messages.
-- Explored performance and memory efficiency techniques.
+**Developer notes**
+- The server expects ship info to be an array of ship objects with `{ id, size, positions }`. The client normalizes and sends `setShips` as such for both manual and random placement.
+- The server tracks per-player shots and sends `result`, `incoming`, `turnUpdate`, `sunk`, and `gameEnd` messages.
+- Grid cells are rendered with classes: `.ship` (your ships), `.hit`, `.miss`, and `.sunk` (orange for sunk ships).
 
-### 🔐 DES Encryption Algorithm
-- Implemented the **Data Encryption Standard (DES)** for a cybersecurity application.
-- Focused on secure key generation and bitwise encryption methods.
+**Troubleshooting**
+- If WebSocket connection fails, ensure the server is running and the port (`WS_PORT`/8081) is not blocked.
+- If you see unexpected misses, open the browser console and the server terminal to compare messages: the server logs `Player X: { type: 'fire', ... }` and additional debug lines when evaluating shots.
 
-### 🌐 Personal Portfolio Website
-- Designed and deployed a full-stack personal portfolio using **React** and **CSS**.
-- Showcases skills, projects, and contact information.
+**Commands**
+- Install dependencies: `npm install`
+- Start backend: `$env:WS_PORT=8081; npm run start-server`
+- Start frontend: `npm run dev`
 
-### 🏪 Point-of-Sale System
-- Built an item management and pricing system for small businesses.
-- Emphasized usability, modular code structure, and database handling.
+**Contributing / Next improvements**
+- Add replay / move history and undo for placement.
+- Add persistent matchmaking / lobby.
+- Add animations for hits/sinks and a replayable game log.
 
-### 🎮 Mini Game Collection
-- Developed classic games like **Tic-Tac-Toe** and others for learning and recreation.
-
----
-
-## 💼 Experience
-
-**HSM Host Crew Member – SLC International Airport (2023–Present)**  
-- Ensured smooth guest experiences in a fast-paced, international environment.  
-- Developed strong teamwork, adaptability, and communication skills.
-
-**Flooring Specialist – Brothers Flooring (2022–2023)**  
-- Delivered precision-based installations and managed client projects.  
-- Enhanced project management and customer relations abilities.
-
----
-
-## 🏆 Certifications
-
-- Microsoft Excel & Word (Certified)  
-- Adobe Suite Certificates  
-- Microsoft Azure Fundamentals  
-- AWS Certification  
-- Oracle Certified  
-
----
-
-## 🤖 Extracurriculars
-
-- **Robotics League (Team Captain):**  
-  - Led design and programming efforts; placed 8th statewide.  
-- **Computer Science Club (UVU):**  
-  - Collaborated on projects and hackathons for 2+ years.  
-
----
-
-## 🌍 Additional Information
-
-- **Bilingual:** Fluent in English & Spanish  
-- **Programming Since:** 2013  
-- Cover letter available upon request  
-
----
-
-## 🧭 Objective
-
-> *“To contribute to innovative projects that push the boundaries of software engineering while continuously advancing my expertise.”*
-
----
-
-### 📫 Let’s Connect!
-
-- 💼 [LinkedIn](#) *(Add your profile link here)*  
-- 📧 [Email Me](mailto:parraleric04@outlook.com)
-
----
-
-⭐ *Thanks for visiting my portfolio! Feel free to explore my repositories and projects.*
+If you want, I can also add a short developer README with debugging tips and instructions for running tests or adding features. Want that?
